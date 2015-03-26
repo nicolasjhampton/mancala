@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 public class CupBoard {
  
   // member variables
-  Queue<Cup> mCupBoard;
+  private Queue<Cup> mCupBoard;
  
   
   // constructor
