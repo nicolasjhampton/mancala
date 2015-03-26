@@ -14,7 +14,18 @@ public class Mancala {
     }
     
     public makeMove(int index) {
-        
+        Cup cup = mBoard.findCup(index);
+        int beads = cup.takeBeads();
+        do {
+            index++;
+            mBoard.findCup(index).addBeads(1);
+        } while (beads ; beads > 0 ; beads--);
+    }
+    
+    
+    
+}
+            
         
         
         
