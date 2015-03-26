@@ -7,14 +7,14 @@ import java.util.ArrayDeque;
 public class CupBoard {
  
   // member variables
-  private Queue<Cup> mCupBoard;
+  Queue<Cup> mCupBoard;
  
   
   // constructor
   public CupBoard() {
     
     // creating the board
-    mCupBoard = new ArrayDeque<Cup>();
+    mCupBoard = new ArrayDeque<Cup>();  
 
    // filling in all the cups
     for(int index = 0 ; index < 14 ; index++) {
@@ -28,7 +28,7 @@ public class CupBoard {
     return mCupBoard;
   }
  
-   public Cup findCup(int index, boolean remove) {
+   public Cup findCup(int index) {
      // initialize the return cup (if the cup can't be found, it returns cup -1 for player one)
      Cup checkCup = new Cup(-1);
      // cycle thru each cup in the board
@@ -41,6 +41,6 @@ public class CupBoard {
         }
       }
      // return the cup, whick can now be maniplated
-     return checkCup;
+     return checkCup;   
     }
 }
