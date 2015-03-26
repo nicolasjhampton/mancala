@@ -35,7 +35,11 @@ public class Mancala {
                cup.addBeads(1);
                beads--;
                }
-            // loop until your out of beads
+            // take any beads in the cup if it's the last cup and continue
+            if(beads == 0 && cup.getBeads() > 1) {
+                beads = cup.takeBeads();
+            }
+          // loop until your out of beads  
         } while (beads > 0);
     }
 }
