@@ -82,7 +82,7 @@ public class Cup {
 
         if (mPlayer) {
           player = 1;
-          relativeIndex = 1 + mIndex;
+          relativeIndex = mIndex;
         } else {
           player = 2;
           relativeIndex = mIndex - 7;
