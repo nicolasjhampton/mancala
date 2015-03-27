@@ -25,21 +25,23 @@ public class Mancala {
         int beads = cup.takeBeads();
         do {
             // move to the next cup
+            
             index++;
             cup = mBoard.findCup(index);
             // if this is the opponent's home cup
             if(cup.isHome() == true && player != cup.isFirstPlayer()) {
-              // do nothing and skip the home
+            // do nothing and skip the home
             } else {
+               if(beads == 0 && cup.getBeads() > 1 && cup.isHome() != true) {
+               // take any beads in the cup if it's the last cup and continue
+               beads = cup.takeBeads();
+               } else {
                // else drop a bead in the cup
                cup.addBeads(1);
                beads--;
                }
-            // take any beads in the cup if it's the last cup and continue
-            if(beads == 0 && cup.getBeads() > 1) {
-                beads = cup.takeBeads();
             }
-          // loop until your out of beads  
+        // loop until your out of beads
         } while (beads > 0);
     }
 }
