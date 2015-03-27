@@ -53,6 +53,7 @@ public class Cup {
   	 // The game dictates only one bead can be added at a time.
   	 
 	 public void addBeads(int beads) {
+     // add the beads to the cup
      mBeads += beads;
     }
   

@@ -1,49 +1,56 @@
 package com.mancala.models;
 
 public class Mancala {
-    
-    private boolean mPlayer1;
-    private boolean mPlayer2;
+    // True is 1st player, false is second player
+    private boolean mPlayer;
     private CupBoard mBoard;
     
-    public Mancala() {
+    public Mancala(boolean player) {
         
-        mPlayer1 = true;
-        mPlayer2 = false;
+        mPlayer = player;
         mBoard = new CupBoard();
     }
   
     public CupBoard getBoard() {
       return mBoard;
     }
+  
+  
     
     // a player chooses a cup and makes a move
     public void makeMove(boolean player, int index) {
         // get the cup
-        Cup cup = mBoard.findCup(index);
+        Cup cup = mBoard.getCup(index);
         // take the beads from the cup
         int beads = cup.takeBeads();
         do {
             // move to the next cup
-            
             index++;
-            cup = mBoard.findCup(index);
+            // zero the index to loop around the board
+            if(index >= 14) {
+              index = 0;
+            }
+            // grab the next cup
+            cup = mBoard.getCup(index);
             // if this is the opponent's home cup
             if(cup.isHome() == true && player != cup.isFirstPlayer()) {
             // do nothing and skip the home
             } else {
-               if(beads == 0 && cup.getBeads() > 1 && cup.isHome() != true) {
+    
+               if(beads == 1 && cup.getBeads() >= 1 && cup.isHome() == false) {
                // take any beads in the cup if it's the last cup and continue
-               beads = cup.takeBeads();
+               beads += cup.takeBeads();
                } else {
                // else drop a bead in the cup
-               cup.addBeads(1);
                beads--;
+               cup.addBeads(1);
                }
             }
         // loop until your out of beads
         } while (beads > 0);
     }
+  
+  
 }
 
 
