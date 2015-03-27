@@ -14,7 +14,7 @@ public class CupBoard {
   public CupBoard() {
     
     // creating the board
-    mCupBoard == new ArrayList<Cup>();  
+    mCupBoard = new ArrayList<Cup>();  
 
    // filling in all the cups
     for(int index = 0 ; index < 14 ; index++) {

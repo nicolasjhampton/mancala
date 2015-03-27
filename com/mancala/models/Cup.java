@@ -1,4 +1,3 @@
-//package goes here
 package com.mancala.models;
 
 // class
