@@ -7,14 +7,14 @@ import java.util.ArrayList;
 public class CupBoard {
  
   // member variables
-  private List<Cup> mCupBoard;
+  List<Cup> mCupBoard; 
  
   
   // constructor
   public CupBoard() {
     
     // creating the board
-    mCupBoard = new ArrayList<Cup>();  
+    mCupBoard == new ArrayList<Cup>();  
 
    // filling in all the cups
     for(int index = 0 ; index < 14 ; index++) {

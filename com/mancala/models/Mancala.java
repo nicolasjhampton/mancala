@@ -10,12 +10,16 @@ public class Mancala {
     public Mancala() {
         mIndex = 1;
         mBeads = 0;
-        mCup = new Cup();
+        mCup = new Cup(0);
         mBoard = new CupBoard();
     }
   
     public CupBoard getBoard() {
       return mBoard;
+    }
+    
+    public int getBeadsInHand() {
+        return mBeads;
     }
     
     public void chooseCup(int index) {
