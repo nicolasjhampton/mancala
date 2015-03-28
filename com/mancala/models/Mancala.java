@@ -1,3 +1,5 @@
+package com.mancala.models;
+
 public class Mancala {
     
     // member variables

@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.lang.*;
+import com.mancala.models.*;
 
 // When constructor is created, member variables will go here
 // We'll demote the Game class from run class status once the console
@@ -9,7 +10,7 @@ import java.lang.*;
 
 public class Game {
     
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
     //    public Game() {
     //    ^^ code commented out in preparation for making this
     //    a constructor for the "Game" class.
@@ -32,6 +33,7 @@ public class Game {
         do{
             game.getNextCup();
             game.settleCup(mPlayer);
+            System.out.print("\033[H\033[2J"); 
             System.out.printf("%s", game.getBoard().getBoard());
             Thread.sleep(1000);
         // until all the beads are gone
