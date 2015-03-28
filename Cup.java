@@ -1,6 +1,3 @@
-package com.mancala.models;
-
-// class
 public class Cup {
   
   // member variables

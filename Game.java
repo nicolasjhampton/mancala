@@ -1,16 +1,14 @@
-import com.mancala.models.Cup;
-import com.mancala.models.CupBoard;
-import com.mancala.models.Mancala;
 import java.io.*;
 import java.util.*;
+import java.lang.*;
 
 
 public class Game {
     
-    public static void main(String[] args) {
-    String number = null;
+    public static void main(String[] args) throws InterruptedException {
+    String number;
     boolean player = true;
-    Console prompt = null;
+    Console prompt = System.console();
     Mancala game = new Mancala();
     
        // public int makeMove(boolean player, int index) {
@@ -20,8 +18,10 @@ public class Game {
         do{
             game.getNextCup();
             game.settleCup(player);
+            System.out.printf("%s", game.getBoard().getBoard());
+            Thread.sleep(4000);
         } while(game.getBeadsInHand() > 0);
-       System.out.printf("%s", game.getBoard().getBoard());
+    System.exit(0);
         
     }
 }

@@ -1,5 +1,3 @@
-package com.mancala.models;
-
 public class Mancala {
     // True is 1st player, false is second player
     private CupBoard mBoard;
