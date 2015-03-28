@@ -32,7 +32,7 @@ public class Game {
        // moves down the board, printing (returning) each move 
         do{
             game.getNextCup();
-            game.settleCup(mPlayer);
+            game.settleCup();
             System.out.print("\033[H\033[2J"); 
             System.out.printf("%s", game.getBoard().getBoard());
             Thread.sleep(1000);

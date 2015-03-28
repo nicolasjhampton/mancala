@@ -7,7 +7,7 @@ public class Mancala {
     private int mIndex;
     private int mBeads;
     private Cup mCup;
-    // private boolean mPlayer;
+    private boolean mPlayer;
     
     // constructor
     public Mancala() {
@@ -15,7 +15,7 @@ public class Mancala {
         mBeads = 0;
         mCup = new Cup(0);
         mBoard = new CupBoard();
-        // mPlayer = true;
+        mPlayer = true;
     }
     
     // getters
@@ -60,7 +60,7 @@ public class Mancala {
     }
     
     // Step 3: method to add or take beads from each cup
-    public void settleCup(boolean player) {
+    public void settleCup() {
         // ToDo: Needs to switch between settle rules for player 1 and 
         //       player 2 based on player member variable.
         //       
@@ -69,13 +69,14 @@ public class Mancala {
         //       side.
         
          if(mCup.isHome() == true &&
-            player != mCup.isFirstPlayer()) {
+            mPlayer != mCup.isFirstPlayer()) {
             // do nothing and skip the home
             } else {
     
                if(mBeads == 1 && 
                   mCup.getBeads() >= 1 && 
-                  mCup.isHome() == false) {
+                  mCup.isHome() == false &&
+                  mPlayer == mCup.isFirstPlayer()) {
                // take any beads in the cup if it's the last cup and continue
                mBeads += mCup.takeBeads();
                } else {
