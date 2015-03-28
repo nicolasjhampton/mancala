@@ -28,7 +28,7 @@ public class Mancala {
         // get the cup
         mCup = mBoard.getCup(mIndex);
         // take the beads from the current cup
-        int mBeads = mCup.takeBeads();
+        mBeads = mCup.takeBeads();
             
     }
     
