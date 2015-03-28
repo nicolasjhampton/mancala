@@ -90,6 +90,27 @@ public class Mancala {
     // ToDo: Need a method to check for beads in opposite cup
     //       at the end of a turn, then take those beads and transfer
     //       them into the last cup if present.
+    public void endTurn() {
+        if(mCup.isFirstPlayer() == mPlayer &&
+           mCup.isHome() == false) {
+            
+            if (mCup.isFirstPlayer()) {
+
+                chooseCup(mIndex + 7);
+                mIndex -= 7;
+                
+            } else {
+                
+                chooseCup(mIndex - 7);
+                mIndex += 7;
+                
+            }
+            int beads = getBeadsInHand();
+            mCup = mBoard.getCup(mIndex);
+            mCup.addBeads(beads);
+        }
+            
+      }
     
     
     // ToDo: Need a method to check if the game is over at the end of a turn

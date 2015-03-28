@@ -38,6 +38,8 @@ public class Game {
             Thread.sleep(1000);
         // until all the beads are gone
         } while(game.getBeadsInHand() > 0);
+        game.endTurn();
+        System.out.printf("%s", game.getBoard().getBoard());
     // temporary program exit
     System.exit(0);
         
