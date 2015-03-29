@@ -108,20 +108,20 @@ public class Mancala {
             if (mCup.isFirstPlayer()) {
 
                 chooseCup(mIndex + 7);
-                mIndex -= 7;
+                
                 
             } else {
                 
                 chooseCup(mIndex - 7);
-                mIndex += 7;
+                
                 
             }
             int beads = getBeadsInHand();
             mCup = mBoard.getCup(mIndex);
             mCup.addBeads(beads);
-            switchPlayer();
-        }
             
+        }
+         switchPlayer();   
       }
     
     // Combines steps 1 through 4 into a single turn

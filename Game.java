@@ -33,13 +33,14 @@ public class Game {
             index = Integer.parseInt(mStartCup);
         } while (index > 6 || index < 0);
        
-           try{
-               game.makeMove(index);
-           } catch (InterruptedException ie) {
-           System.out.println("Something has interrupted the wait: %n");
-           ie.printStackTrace();
-           }
-    } while (index != 0);   
+        try{
+            game.makeMove(index);
+        } catch (InterruptedException ie) {
+            System.out.println("Something has interrupted the wait: %n");
+            ie.printStackTrace();
+        }
+        
+     } while (index != 0);   
            
        
        
