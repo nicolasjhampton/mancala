@@ -10,40 +10,43 @@ import com.mancala.models.*;
 
 public class Game {
     
-    public static void main(String[] args) throws InterruptedException, IOException {
-    //    public Game() {
+    public static void main(String[] args) throws IOException {
+    
+    //public Game()  {
     //    ^^ code commented out in preparation for making this
     //    a constructor for the "Game" class.
     String mStartCup;
     boolean mPlayer = true;
     Console prompt = System.console();
     Mancala game = new Mancala();
+    int index = 0;
     
-       // public int makeMove(boolean player, int index) {
-       // ^^ Code commented out in preperation for making this 
-       //    a "makeMove" function.
+    
+       
        
        //  Prints (returns) the board at the start of the move  
        System.out.printf("%s", game.getBoard().getBoard());
        // asks for a move (this will be limited to 1-6)
-       mStartCup = prompt.readLine("What cup:  ");
-       // grabs the chosen cups beads
-       game.chooseCup(Integer.parseInt(mStartCup));
-       // moves down the board, printing (returning) each move 
-        do{
-            game.getNextCup();
-            game.settleCup();
-            System.out.print("\033[H\033[2J"); 
-            System.out.printf("%s", game.getBoard().getBoard());
-            Thread.sleep(1000);
-        // until all the beads are gone
-        } while(game.getBeadsInHand() > 0);
-        game.endTurn();
-        System.out.printf("%s", game.getBoard().getBoard());
+    do {
+        do {
+            mStartCup = prompt.readLine("Choose a cup 1 - 6:  ");
+            index = Integer.parseInt(mStartCup);
+        } while (index > 6 || index < 0);
+       
+           try{
+               game.makeMove(index);
+           } catch (InterruptedException ie) {
+           System.out.println("Something has interrupted the wait: %n");
+           ie.printStackTrace();
+           }
+    } while (index != 0);   
+           
+       
+       
     // temporary program exit
     System.exit(0);
         
-    }
+    
 }
            
-       
+}       
