@@ -36,6 +36,16 @@ public class Mancala {
         mPlayer = !mPlayer;
     }
     
+    // prints the current status of the board
+    public void printResult() throws InterruptedException {
+        // clears the previous move from the screen
+            System.out.print("\033[H\033[2J"); 
+            // print the new move
+            System.out.printf("%s", getBoard().getBoard());
+            // wait a second
+            Thread.sleep(1000);
+    }
+    
     // gameplay methods
     
     // Step 1: method to choose the first cup to take your turn
@@ -69,7 +79,7 @@ public class Mancala {
     }
     
     // Step 3: method to add or take beads from each cup
-    public void settleCup() {
+    public void settleCup() throws InterruptedException {
          // if this is the other player's home cup
          if(mCup.isHome() == true &&
             mPlayer != mCup.isFirstPlayer()) {
@@ -86,11 +96,15 @@ public class Mancala {
                     // take any beads in the cup if it's the last cup
                     // and continue
                     mBeads += mCup.takeBeads();
+                    printResult();
                } else {
                // else take a bead from your hand 
                mBeads--;
                // and put it in the cup
-               mCup.addBeads(1);
+                   if(mbeads > 0) {
+                      mCup.addBeads(1);
+                   }
+               printResult();
                }
             }
     }
@@ -100,7 +114,7 @@ public class Mancala {
     //         those beads and transfer
     //         them into the last cup if present,
     //         then switch the player.
-    public void endTurn() {
+    public void endTurn() throws InterruptedException {
         // if the cup is on the player's home side
         // and not the home cup. We can assume, as a rule of the game,
         // that the last cup only has one bead in it, no need to check
@@ -129,7 +143,7 @@ public class Mancala {
             mCup = mBoard.getCup(mIndex);
             // put them in the cup we ended on
             mCup.addBeads(beads);
-            
+            printResult();
         }
          switchPlayer();   
       }
@@ -147,21 +161,13 @@ public class Mancala {
         do{
             getNextCup();
             settleCup();
-            // clears the previous move from the screen
-            System.out.print("\033[H\033[2J"); 
-            // print the new move
-            System.out.printf("%s", getBoard().getBoard());
-            // wait a second
-            Thread.sleep(1000);
+            
         // until all the beads are gone
         } while(getBeadsInHand() > 0);
         endTurn();
         }
-        // clears the last move
-        System.out.print("\033[H\033[2J"); 
-        // displays final outcome
-        System.out.printf("%s", getBoard().getBoard());
     }
+    
     
     
     // ToDo: Need a method to check if the game is over at the end of a turn

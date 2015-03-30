@@ -6,11 +6,16 @@ import com.mancala.models.*;
 // When constructor is created, member variables will go here
 // We'll demote the Game class from run class status once the console
 // version is complete
+    
 
 
 public class Game {
     
-    public static void main(String[] args) throws IOException {
+    
+        
+    
+    public static void main(String[] args) 
+        throws IOException, InterruptedException {
     
     //public Game()  {
     //    ^^ code commented out in preparation for making this
@@ -19,13 +24,13 @@ public class Game {
     String mPlayer;
     Console prompt = System.console();
     Mancala game = new Mancala();
-    int index = 0;
+    int mIndex = 0;
     
     
        
        
        //  Prints (returns) the board at the start of the move  
-       System.out.printf("%s", game.getBoard().getBoard());
+       game.printResult();
        // asks for a move (this will be limited to 1-6)
     do {
         // determine whose turn it is and return the name
@@ -35,25 +40,25 @@ public class Game {
         } else {
             mPlayer = "Player 2";
         }
-        System.out.println("%s, it's your turn...%n", mPlayer);
+        System.out.printf("%s, it's your turn...%n", mPlayer);
             
             // start the turn, reject bad choices
             do {
             
                 mStartCup = prompt.readLine("Choose a cup 1 - 6:  ");
-                index = Integer.parseInt(mStartCup);
-            } while (index > 6 || index < 0);
+                mIndex = Integer.parseInt(mStartCup);
+            } while (mIndex > 6 || mIndex < 0);
        
             try{
                 // run the results of the turn
-                game.makeMove(index);
+                game.makeMove(mIndex);
             } catch (InterruptedException ie) {
                 // catch any interruption error with the Thread 
                 System.out.println("Something has interrupted the wait: %n");
                 ie.printStackTrace();
             }
         
-     } while (index != 0);   
+     } while (mIndex != 0);   
            
        
        
