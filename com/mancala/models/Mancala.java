@@ -98,10 +98,11 @@ public class Mancala {
                     mBeads += mCup.takeBeads();
                     printResult();
                } else {
-               // else take a bead from your hand 
-               mBeads--;
-               // and put it in the cup
+              
                    if(mbeads > 0) {
+                      // else take a bead from your hand 
+                      mBeads--;
+                      // and put it in the cup
                       mCup.addBeads(1);
                    }
                printResult();
