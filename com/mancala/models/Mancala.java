@@ -170,10 +170,32 @@ public class Mancala {
     }
     
     
-    
+    public int winOrLose() {
     // ToDo: Need a method to check if the game is over at the end of a turn
     //       AKA all the cups on one side are empty.
         
+        int whoWon = 0;
+        
+        if(isSideEmpty(1,7)) {
+            whoWon = 1;
+        }
+        if(isSideEmpty(8,13)) {
+            whoWon = -1;
+        }
+        return whoWon;
+        
+    }
+    
+    public boolean isSideEmpty(int startCup, int endCup) {
+        List<Cup> side = mBoard.getBoard().subList(startCup, endCup);
+        boolean hasBeads = false;
+        for(Cup checkcup : side) {
+            if(checkcup.getBeads() != 0) {
+                hasBeads = true;
+            }
+        }
+        return !hasBeads;
+    }
     
   
   
