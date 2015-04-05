@@ -1,5 +1,7 @@
 package com.mancala.models;
 
+import java.util.List;
+
 public class Mancala {
     
     // member variables
@@ -81,7 +83,7 @@ public class Mancala {
     // Step 3: method to add or take beads from each cup
     public void settleCup() throws InterruptedException {
          // if this is the other player's home cup
-         if(mCup.isHome() == true &&
+         if(mCup.isHome() &&
             mPlayer != mCup.isFirstPlayer()) {
             // do nothing and skip the home
             } else {
@@ -90,7 +92,7 @@ public class Mancala {
                   // AND there's beads already in the cup
                   mCup.getBeads() >= 1 && 
                   // AND this isn't a home cup
-                  mCup.isHome() == false &&
+                       !mCup.isHome() &&
                   // AND this is your home side...
                   mPlayer == mCup.isFirstPlayer()) {
                     // take any beads in the cup if it's the last cup
@@ -99,7 +101,7 @@ public class Mancala {
                     printResult();
                } else {
               
-                   if(mbeads > 0) {
+                   if(mBeads > 0) {
                       // else take a bead from your hand 
                       mBeads--;
                       // and put it in the cup
@@ -124,7 +126,7 @@ public class Mancala {
         // test to make sure this isn't a home cup 
         // and that the cup is on the player's side
         if(mCup.isFirstPlayer() == mPlayer &&
-           mCup.isHome() == false) {
+                !mCup.isHome()) {
             // different index algorithm for cups 1 through 6
             // and 8 - 12.
             if (mCup.isFirstPlayer()) {
@@ -151,9 +153,9 @@ public class Mancala {
     
     // Combines steps 1 through 4 into a single turn
     public void makeMove(int index) throws InterruptedException {
-       // ^^ Code commented out in preperation for making this 
+       // ^^ Code commented out in preparation for making this
        //    a "makeMove" function.
-       // grabs the chosen cups beads
+       //    grabs the chosen cups beads
        chooseCup(index);
         if(index == 0) {
             // do nothing
@@ -189,8 +191,8 @@ public class Mancala {
     public boolean isSideEmpty(int startCup, int endCup) {
         List<Cup> side = mBoard.getBoard().subList(startCup, endCup);
         boolean hasBeads = false;
-        for(Cup checkcup : side) {
-            if(checkcup.getBeads() != 0) {
+        for(Cup checkCup : side) {
+            if(checkCup.getBeads() != 0) {
                 hasBeads = true;
             }
         }
